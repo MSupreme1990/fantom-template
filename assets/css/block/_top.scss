@@ -1,0 +1,27 @@
+.b-top {
+  padding: 0.4em $flexy-grid-gutter;
+  border-bottom: 1px solid #f2f2f2;
+  margin: 0 -1em;
+
+  &__menu {
+    text-align: right;
+  }
+
+  &__link {
+    color: flexy-color(gray);
+    display: inline-block;
+    font-size: 0.8em;
+
+    &:not(:first-of-type) {
+      margin-left: 1em;
+    }
+
+    &:hover {
+      color: flexy-color(menu);
+    }
+
+    @include flexy-breakpoint(large) {
+      font-size: 0.9em;
+    }
+  }
+}

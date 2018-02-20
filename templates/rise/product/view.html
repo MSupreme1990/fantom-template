@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => product]
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% macro product_header %}
+    <div class="b-pane">
+        <div class="b-product__code">Код продукта: {{ product.id }}</div>
+        {% if get_parameter_value('rise.product.enable_rating') %}
+            <div class="b-rating b-tooltip b-tooltip_top" data-tooltip="Рейтинг товара: {{ product.rating }}">
+                {%- for i in range(1, 5) -%}
+                    <span class="b-rating__star{% if i <= product.rating %} b-rating__star_fill{% endif %}">☆</span>
+                {%- endfor -%}
+            </div>
+        {% endif %}
+    </div>
+    <h1 class="b-heading">{{ product }}</h1>
+
+    {% if product.label.count() > 0 %}
+        <div class="b-space"></div>
+
+        <div class="b-product__top">
+            {% for label in product.label.all() %}
+                <a href="{{ label.getAbsoluteUrl }}"
+                   class="b-product__label b-tooltip b-tooltip_top"
+                   data-tooltip="Посмотреть все товары с меткой {{ label }}"
+                   style="background-color: {{ label.color }}">
+                    <span>{{ label }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% block content %}
+    <div class="b-row">
+        <div class="b-col b-col_small_12 b-col_large_3">
+            {% include "_sidebar.html" %}
+        </div>
+        <div class="b-col b-col_small_12 b-col_large_9">
+            <div class="b-row">
+                <div class="b-col b-col_small_12 b-hide b-hide_large_up">
+                    {% call product_header %}
+
+                    <div class="b-space"></div>
+                </div>
+                <div class="b-col b-col_small_12 b-col_large_4">
+                    <div class="b-product-image__slider" data-gallery>
+                        {% for image in product.getImages() %}
+                            <div>
+                                {#<a class="b-product-image__link"#}
+                                   {#href="{{ image.image|imagine_filter('rise_product_resize') }}">#}
+                                    <img src="{{ image.image|imagine_filter('product_slider') }}"
+                                         alt="{{ product }}" class="b-product-image__image"/>
+                                {#</a>#}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="b-col b-col_small_12 b-col_large_1">
+                    <div class="b-product-nav">
+                        <div class="b-product-nav__slider">
+                            {% for image in product.getImages() %}
+                                <div>
+                                    <div class="b-product-nav__item">
+                                        <img class="b-product-nav__image"
+                                             src="{{ image.image|imagine_filter('rise_product_slide_thumb') }}"
+                                             alt="{{ product }}"/>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="b-col b-col_small_12 b-col_large_7">
+                    <div class="b-visible b-visible_large_up">
+                        {% call product_header %}
+                    </div>
+
+                    <div class="b-product__order">
+                        <div class="b-product__price">
+                            <span data-product-price>{{ product.price|number_format(2, '.', ' ') }} руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="b-space"></div>
+
+                    {% include "rise/product/_cart_form.html" %}
+
+                    {% if collections|length > 0 %}
+                        <div class="b-space"></div>
+
+                        <h3 class="b-heading">Находится в коллекциях</h3>
+                        <div class="b-collection-target">
+                            {% for collection in collections %}
+                                <div>
+                                    <a class="b-collection-target__link"
+                                       href="{{ collection.getAbsoluteUrl() }}">#{{ collection }}</a>
+                                </div>
+                            {% else %}
+                                Коллекции не указаны
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="b-divider b-divider_cloud"></div>
+
+            <div class="b-wrapper">
+                <div class="b-row">
+                    <div class="b-col b-col_small_12">
+                        <div class="b-product-tab b-tab">
+                            <div class="b-tab__header">
+                                <div class="b-tab__tab b-tab__tab_active" data-tab="description">
+                                    Описание товара
+                                </div>
+                                {% if product.entity %}
+                                    <div class="b-tab__tab" data-tab="attributes">
+                                        Характеристики
+                                    </div>
+                                {% endif %}
+                                {% if get_parameter_value('rise.product.enable_reviews') %}
+                                    <div class="b-tab__tab" data-tab="reviews">
+                                        Отзывы
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div data-tab="description" class="b-tab__content b-tab__content_active">
+                                <div class="b-spoiler">
+                                    <div class="b-spoiler__container">
+                                        <div class="b-typeset">
+                                            {% if product.content %}
+                                                {{ product.content|safe }}
+                                            {% else %}
+                                                Описание отсутствует
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="b-button b-spoiler__readmore">Подробнее</div>
+                                </div>
+                            </div>
+                            {% if product.entity %}
+                                <div data-tab="attributes" class="b-tab__content">
+                                    <table class="b-table">
+                                        <tbody class="b-table__thead">
+                                        {% for param in product.params.all() %}
+                                            <tr class="b-table__tr">
+                                                <th class="b-table__th b-product__th">{{ param.attr }}</th>
+                                                <td class="b-table__td">
+                                                    {% if param.value %}
+                                                        {{ param.attr.prefix }} {{ param.value }} {{ param.attr.suffix }}
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% endif %}
+                            {% if get_parameter_value('rise.product.enable_reviews') %}
+                                <div data-tab="reviews" class="b-tab__content">
+                                    {% if reviews|length > 0 %}
+                                        {% for review in reviews %}
+                                            <div>
+                                                {{ review.review }}
+                                            </div>
+                                        {% endfor %}
+
+                                        {{ pagination_render(review_pager)|safe }}
+                                    {% else %}
+                                        Отзывы остутствуют
+                                    {% endif %}
+
+                                    <div class="b-space"></div>
+
+                                    <h2 class="b-heading">Добавить отзыв</h2>
+                                    {{ form_render(review_form)|safe }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if related|length > 0 %}
+                <div class="b-divider b-divider_cloud"></div>
+
+                <div class="b-wrapper">
+                    <div class="b-row">
+                        <div class="b-col b-col_small_12">
+                            <h2 class="b-heading">Похожие товары</h2>
+                            <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_4">
+                                {% for rel in related %}
+                                    <div class="b-block-grid__item">
+                                        {% include "rise/product/_product.html" with ['product' => rel] %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% set history = rise_product_history() %}
+            {% if history|length > 0 %}
+                <div class="b-divider b-divider_cloud"></div>
+
+                <div class="b-wrapper">
+                    <div class="b-row">
+                        <div class="b-col b-col_small_12">
+                            <h2 class="b-heading">Недавно вы смотрели</h2>
+                            <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_4">
+                                {% for item in history %}
+                                    <div class="b-block-grid__item">
+                                        {% include "rise/product/_product.html" with ['product' => item] %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

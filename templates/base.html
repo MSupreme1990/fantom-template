@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{{ preload(asset('themes/fantom/css/app.css')) }}">
+    <script src="{{ preload(asset('themes/fantom/js/app.js')) }}"></script>
+    {{ render_meta()|safe }}
+</head>
+<body class="b-body">
+<div class="b-wrapper b-body__wrapper">
+    <div class="b-row">
+        <div class="b-col b-col_small_12">
+            {% include "_top.html" %}
+            {% include "_header.html" %}
+            {#{% include "_features.html" %}#}
+
+            {% block breadcrumbs %}
+                {% include "_breadcrumb.html" %}
+            {% endblock %}
+
+            {% block flash %}
+                {% include "_flash.html" %}
+            {% endblock %}
+
+            {% block main %}
+                {% block content %}{% endblock %}
+            {% endblock %}
+
+            <script type="text/javascript">
+                window.rise_accounting = {{ rise_get_accounting_params()|safe }};
+            </script>
+        </div>
+    </div>
+</div>
+
+{% include "_partner.html" %}
+{% include "_footer.html" %}
+{% include "_scripts.html" %}
+
+</body>
+</html>

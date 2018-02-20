@@ -1,0 +1,20 @@
+$b-flexy-block-empty-color: flexy-color(gray);
+
+.b-empty {
+  &__icon {
+    @include antialias;
+    text-align: center;
+    font-size: 4em;
+    font-family: 'Material Icons';
+    font-style: normal;
+    margin: 0.5em 0;
+    color: $b-flexy-block-empty-color;
+  }
+
+  &__text {
+    @include antialias;
+    text-align: center;
+    font-size: 1.2em;
+    color: $b-flexy-block-empty-color;
+  }
+}

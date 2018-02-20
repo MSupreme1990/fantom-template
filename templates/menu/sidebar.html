@@ -1,0 +1,20 @@
+{% for item in items %}
+    <div class="b-sidebar__item{% if item.items|length > 0 %} b-sidebar__item_drop{% endif %}">
+        <a href="{{ item.url ? item.url : '#' }}" class="b-sidebar__link">
+            <span class="b-sidebar__text">
+                {{ item.name }}
+            </span>
+            <span class="b-icon">keyboard_arrow_right</span>
+        </a>
+
+        {#{% if item.items|length > 0 %}#}
+            {#<div class="b-sidebar__dropdown">#}
+                {#{% for child in children %}#}
+                    {#<a class="b-sidebar__sublink" href="{{ child.url ? child.url : '#' }}">#}
+                        {#{{ child.name }}#}
+                    {#</a>#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#{% endif %}#}
+    </div>
+{% endfor %}

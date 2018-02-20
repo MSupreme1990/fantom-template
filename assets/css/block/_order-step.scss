@@ -1,0 +1,26 @@
+.b-order-step {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: {
+    color: flexy-color(cloud);
+  }
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+
+  &__arrow {
+    color: flexy-color(gray);
+    margin: 0 1em;
+  }
+
+  &__step {
+    @include antialias;
+    font-size: 1.1em;
+    color: flexy-color(gray);
+
+    &_active {
+      font-weight: bold;
+      color: flexy-color(text);
+    }
+  }
+}

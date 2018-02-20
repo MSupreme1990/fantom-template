@@ -1,0 +1,13 @@
+<div class="b-autocomplete">
+    {% for product in products %}
+        <div class="b-autocomplete__item" data-url="{{ product.getAbsoluteUrl() }}">
+            <div class="b-autocomplete__name">{{ product }}</div>
+            <div class="b-autocomplete__price">{{ product.price|number_format(2, '.', ' ') }} руб.</div>
+        </div>
+    {% else %}
+        <div class="b-empty">
+            <div class="b-empty__icon"></div>
+            <div class="b-empty__text">Попробуйте изменить поисковый запрос</div>
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,33 @@
+/* overlay at start */
+.mfp-zoom-in.mfp-bg {
+  opacity: 0;
+  transition: all 0.25s ease-out;
+}
+
+/* overlay animate in */
+.mfp-zoom-in.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+
+/* overlay animate out */
+.mfp-zoom-in.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+/* content at start */
+.mfp-zoom-in.mfp-wrap .mfp-content {
+  opacity: 0;
+  transition: all 0.15s ease-out;
+  transform: scale(0.8, 0.8);
+}
+
+/* content animate it */
+.mfp-zoom-in.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+/* content animate out */
+.mfp-zoom-in.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}

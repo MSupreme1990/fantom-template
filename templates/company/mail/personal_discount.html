@@ -1,0 +1,9 @@
+{% extends "mail/template.html" %}
+
+{% block content %}
+    <h1>Просьба персональной скидки</h1>
+    <div>Имя: {{ model.name }}</div>
+    <div>Телефон: {{ model.phone }}</div>
+    <div>Электронная почта: {{ model.email }}</div>
+    <div>Дата создания: {{ model.created_at }}</div>
+{% endblock %}

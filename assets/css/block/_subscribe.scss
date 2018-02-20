@@ -1,0 +1,29 @@
+.b-subscribe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    @include antialias;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.1em;
+  }
+
+  &__text {
+    @include antialias;
+    color: #fff;
+    font-size: 0.9em;
+  }
+
+  &__button {
+    @include antialias;
+    flex-basis: 180px;
+  }
+
+  &__form {
+    margin-left: 2em;
+    @extend .b-input-group;
+    flex: 1 0 auto;
+  }
+}

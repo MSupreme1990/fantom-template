@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Создание пароля']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="b-heading">Создание пароля</h1>
+
+    {{ form_render(form)|safe }}
+{% endblock %}

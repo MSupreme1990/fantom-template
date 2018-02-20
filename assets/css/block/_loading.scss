@@ -1,0 +1,46 @@
+.b-loading {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: {
+      color: rgba(#fff, 0.8);
+    }
+    z-index: 9;
+  }
+
+  &::after {
+    @include antialias;
+    z-index: 10;
+    //content: 'cached';
+    content: 'rotate_right';
+    font-family: 'Material Icons';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 48px;
+    display: block;
+    text-align: center;
+    height: 48px;
+    line-height: 48px;
+    margin: -24px 0 0 -24px;
+    font-size: 3em;
+    color: flexy-color();
+    animation: spin 1s linear infinite;
+    transform-origin: 50% 50%;
+  }
+}
+
+@keyframes spin {
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

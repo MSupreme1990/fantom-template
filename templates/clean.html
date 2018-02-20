@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="/bundles/company/css/bundle.css">
+    <script src="/bundles/company/js/bundle.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body class="b-body">
+<div class="b-site">
+    {% include "_top.html" %}
+    {% include "_header.html" %}
+
+    {% block main %}
+        {% block content %}{% endblock %}
+    {% endblock %}
+</div>
+
+{% include "_footer.html" %}
+</body>
+</html>

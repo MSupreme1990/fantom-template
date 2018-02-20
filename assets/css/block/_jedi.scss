@@ -1,0 +1,19 @@
+.b-jedi {
+  padding: 2em 0;
+  text-align: center;
+
+  &__text {
+    @include antialias;
+    text-align: center;
+    font-size: em-calc(20px);
+    color: #343a58;
+  }
+
+  &__author {
+    @include antialias;
+    text-align: center;
+    font-family: 'Savoye LET';
+    font-size: em-calc(20px);
+    color: #343a58;
+  }
+}

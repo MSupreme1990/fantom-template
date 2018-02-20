@@ -1,0 +1,37 @@
+<div class="b-product-item">
+    {% set image = product.getImage() %}
+    {% if image %}
+        <a href="{{ product.getAbsoluteUrl() }}"
+                {% if image %} style="background-image: url({{ image.image|imagine_filter('rise_product_thumb') }})"{% endif %} class="b-product-item__image">
+            {% for label in product.label.filter(['is_public' => true]).all() %}
+                <span class="b-product-item__label" style="background-color: {{ label.color }}">
+                {{ label }}
+            </span>
+            {% endfor %}
+        </a>
+    {% else %}
+        <a href="{{ product.getAbsoluteUrl() }}" class="b-product-item__image b-product-item__image_noimage">
+            {% for label in product.label.filter(['is_public' => true]).all() %}
+                <span class="b-product-item__label" style="background-color: {{ label.color }}">
+                {{ label }}
+            </span>
+            {% endfor %}
+        </a>
+    {% endif %}
+
+    <div class="b-product-item__content">
+        <a href="{{ product.getAbsoluteUrl() }}" class="b-product-item__name">
+            {{ product }}
+        </a>
+        <div class="b-product-item__panel">
+            <div class="b-product-item__price">{{ product.price|number_format(2, '.', ' ') }} р.</div>
+            <div>
+                <a href="{{ url('rise_cart_add') }}" class="b-button"
+                   data-cart-add
+                   data-id="{{ product.id }}">
+                    <i class="b-icon">&#xE8CB;</i> В корзину
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

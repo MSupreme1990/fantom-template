@@ -1,0 +1,9 @@
+.b-pager {
+  display: flex;
+  flex-direction: column;
+
+  @include flexy-breakpoint(large) {
+    display: flex;
+    flex-direction: row;
+  }
+}

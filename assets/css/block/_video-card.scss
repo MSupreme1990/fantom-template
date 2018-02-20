@@ -1,0 +1,13 @@
+.b-video-card {
+  margin-bottom: 2em;
+  display: block;
+
+  &__image {
+    @extend .b-image;
+    margin-bottom: 1em;
+  }
+
+  &__footer {
+    @include antialias;
+  }
+}

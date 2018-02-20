@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Каталог', 'url' => url('rise_index')],
+    ['name' => 'Акции и скидки', 'url' => url('rise_product_label_list')],
+    ['name' => label],
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-title">{{ label }}</h1>
+            </div>
+
+            <div class="b-col b-col_small_3">
+                {% include "rise/product/_sidebar.html" %}
+            </div>
+            <div class="b-col b-col_small_9">
+                <div class="b-row">
+                    <div class="b-col b-col_small_8">&nbsp;</div>
+                    <div class="b-col b-col_small_4">
+                        <div class="b-input-group">
+                            <select class="b-input b-input_select"
+                                    name="order" id="sort" onchange="window.location='?order=' + this.value;">
+                                <option value="" {{ request.query.get('order') == '' ? 'selected' : '' }}>По умолчанию
+                                </option>
+                                <option value="price" {{ request.query.get('order') == 'price' ? 'selected' : '' }}>По
+                                    возрастанию
+                                </option>
+                                <option value="-price" {{ request.query.get('order') == '-price' ? 'selected' : '' }}>По
+                                    убыванию
+                                </option>
+                            </select>
+                            <a href="{{ url('rise_index') }}" class="b-button">Очистить</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="b-divider b-divider_divider"></div>
+
+                {% if products|length %}
+                    <div class="b-block-grid b-block-grid_small_3">
+                        {% for product in products %}
+                            <div class="b-block-grid__item">
+                                {% include "rise/product/_product.html" with ['product' => product] %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="b-divider b-divider_divider"></div>
+
+                    {{ pagination_render(pager)|safe }}
+                {% else %}
+                    <p>Товары не найдены</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

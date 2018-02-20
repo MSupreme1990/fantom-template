@@ -1,0 +1,6 @@
+На сайте заполнена форма обратной связи
+Имя: {{ feedback.name }}
+Электронная почта: {{ feedback.email }}
+Телефон: {{ feedback.phone }}
+Сообщение: {{ feedback.message }}
+Дата создания: {{ feedback.created_at }}

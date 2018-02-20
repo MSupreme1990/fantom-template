@@ -1,0 +1,16 @@
+.b-product-block {
+  margin-bottom: 1em;
+
+  &__name {
+    font-size: em-calc(18px);
+    font-weight: bold;
+    @include antialias;
+    color: flexy-color(text);
+  }
+
+  &__content {
+    @include antialias;
+    color: flexy-color(text);
+    @extend .b-typeset;
+  }
+}

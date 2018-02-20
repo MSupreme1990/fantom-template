@@ -1,0 +1,68 @@
+.b-arrow {
+  &__container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &__arrow {
+    $arrow-size: 20px;
+    $arrow-inactive-color: #d7d7d7;
+    $arrow-active-color: #00adec;
+
+    @include antialias;
+    position: relative;
+    margin-right: $arrow-size;
+    box-sizing: border-box;
+    width: 180px;
+    text-align: center;
+    line-height: $arrow-size * 2;
+    background: {
+      color: $arrow-inactive-color;
+    }
+
+    &::after {
+      left: 100%;
+      top: 50%;
+      border: {
+        style: solid;
+        color: transparent transparent transparent $arrow-inactive-color;
+        width: $arrow-size;
+      }
+      content: ' ';
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      margin-top: -$arrow-size;
+    }
+
+    &::before {
+      left: 0;
+      top: 50%;
+      border: $arrow-size solid transparent;
+      content: ' ';
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      margin-top: -$arrow-size;
+      border-left-color: #fff;
+    }
+
+    &:first-of-type {
+      &::before {
+        display: none;
+      }
+    }
+
+    &_active {
+      background-color: $arrow-active-color;
+      color: #fff;
+
+      &::after {
+        border-left-color: $arrow-active-color;
+      }
+    }
+  }
+}

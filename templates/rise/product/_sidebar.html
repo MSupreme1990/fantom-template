@@ -1,0 +1,55 @@
+<div class="b-product-sidebar">
+    <div class="b-product-sidebar__block b-product-sidebar__block_gray">
+        <div class="b-product-sidebar__header">
+            <div class="b-title">Категории</div>
+            {{ rise_render_categories()|safe }}
+        </div>
+    </div>
+    <div class="b-space"></div>
+    <div class="b-product-sidebar__block b-product-sidebar__block_gray">
+        <div class="b-product-sidebar__header">
+            <div class="b-product-sidebar__title">Фильтр продукции:</div>
+        </div>
+        {{ form_start(filterForm)|safe }}
+        {% for key, value in filterForm.children %}
+            {% if key == 'submit' or key == 'reset' %}
+                {% continue %}
+            {% endif %}
+
+            <div class="b-product-sidebar__row">
+                <div class="b-product-sidebar__label">
+                    <div class="b-pane">
+                        <div>{{ value.vars.label }}</div>
+                        <i class="b-icon">&#xE313;</i>
+                    </div>
+                </div>
+                <div class="b-product-sidebar__value">
+                    {{ form_widget(value)|safe }}
+                    {{ form_errors(value)|safe }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="b-product-sidebar__row">
+            {{ form_row(filterForm.children.submit)|safe }}
+        </div>
+        <div class="b-product-sidebar__row">
+            {{ form_row(filterForm.children.reset)|safe }}
+        </div>
+        {{ form_end(filterForm)|safe }}
+    </div>
+
+    {% if collections|length > 0 %}
+        <div class="b-product-sidebar__block">
+            <div class="b-product-sidebar__header">
+                <div class="b-product-sidebar__title">Коллекции:</div>
+            </div>
+            <div class="b-collection-target">
+                {% for collection in collections %}
+                    <a class="b-collection-target__link" href="{{ collection.getAbsoluteUrl() }}">
+                        {{ collection }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>

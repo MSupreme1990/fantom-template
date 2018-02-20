@@ -1,0 +1,32 @@
+.b-portfolio {
+  margin-bottom: 1em;
+
+  &__image {
+    position: relative;
+    height: 320px;
+    display: block;
+    background: {
+      color: transparent;
+      position: 50% 50%;
+      repeat: no-repeat;
+      size: cover;
+    }
+  }
+
+  &__name {
+    display: block;
+    @include antialias;
+    font-weight: 500;
+    width: 100%;
+    font-size: em-calc(24px);
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1em;
+    box-sizing: border-box;
+    background: {
+      color: rgba(#000, 0.4);
+    }
+  }
+}

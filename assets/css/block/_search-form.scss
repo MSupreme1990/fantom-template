@@ -1,0 +1,51 @@
+$search-height: 32px;
+
+.b-search-form {
+  @extend .b-input-group;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: $flexy-theme-border-radius;
+  position: relative;
+  padding: 1em 0;
+
+  @include flexy-breakpoint(large) {
+    padding: 0;
+  }
+
+  &__icon {
+    @extend .b-icon;
+  }
+
+  &__button {
+    right: 0.5rem;
+    top: 50%;
+    margin-top: -($search-height / 2);
+    position: absolute;
+    border-radius: $flexy-theme-border-radius * 2;
+    cursor: pointer;
+    width: $search-height;
+    height: $search-height;
+    text-align: center;
+    font-size: 1.3em;
+
+    &:hover {
+      color: flexy-color();
+    }
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em calc(2em + 0.5rem) 0.5em 0.5em;
+    border-radius: $flexy-theme-border-radius;
+    border: 2px solid #404755;
+
+    &:not(:focus) {
+      cursor: pointer;
+    }
+
+    &_footer {
+      color: #fff;
+    }
+  }
+}

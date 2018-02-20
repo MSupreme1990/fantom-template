@@ -1,0 +1,40 @@
+{% set features = [
+    ['icon' => 'support', 'title' => 'Поддержка клиентов', 'text' => '+7 (495) 664-98-12'],
+    ['icon' => 'order', 'title' => 'Принимаем заказы', 'text' => '24/7 без выходных'],
+    ['icon' => 'delivery', 'title' => 'Бесплатная доставка', 'text' => 'При заказе от 2000 руб.'],
+    ['icon' => 'guard', 'title' => 'Защита покупателя', 'text' => 'Возврат течении 14 дней.'],
+] %}
+
+<div class="b-visible b-visible_large_up">
+<div class="b-feature">
+    {% for feature in features %}
+        <div class="b-feature__item b-feature__item_half">
+            <div class="b-feature__icon b-feature__icon_{{ feature.icon }}"></div>
+            <div class="b-feature__content">
+                <div class="b-feature__title">{{ feature.title }}</div>
+                <div class="b-feature__text">{{ feature.text }}</div>
+            </div>
+        </div>
+        {% if not loop.last %}
+            <div class="b-feature__divider"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+</div>
+<div class="b-hide b-hide_large_up">
+    <div class="b-feature__mobile">
+        <div class="b-block-grid b-block-grid_small_4">
+            {% for feature in features %}
+                <div class="b-block-grid__item">
+                    <div class="b-feature__mobile-content">
+                        <div class="b-feature__icon-mobile b-feature__icon-mobile_{{ feature.icon }}"></div>
+                        {#<div>#}
+                            {#<div>{{ feature.title }}</div>#}
+                            {#<div>{{ feature.text }}</div>#}
+                        {#</div>#}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

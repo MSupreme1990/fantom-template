@@ -1,0 +1,21 @@
+{% if breadcrumbs|length > 0 %}
+    <div class="b-breadcrumb">
+        <div class="b-breadcrumb__item">
+            <a href="/" class="b-breadcrumb__link">
+                Главная
+            </a>
+        </div>
+        {% for bc in breadcrumbs %}
+            <div class="b-breadcrumb__symbol"></div>
+            {% if loop.last %}
+                <div class="b-breadcrumb__item b-breadcrumb__item_current">
+                    {{ bc.name }}
+                </div>
+            {% else %}
+                <div class="b-breadcrumb__item">
+                    <a class="b-breadcrumb__link" href={{ bc.url }}>{{ bc.name }}</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

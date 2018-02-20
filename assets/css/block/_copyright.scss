@@ -1,0 +1,7 @@
+.b-copyright {
+  &__text {
+    color: #fff;
+    font-size: 14px;
+    @include antialias;
+  }
+}

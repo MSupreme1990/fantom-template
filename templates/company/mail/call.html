@@ -1,0 +1,7 @@
+{% extends "mail/template.html" %}
+
+{% block content %}
+    <h1>Запрос звонка</h1>
+    <div>Имя: {{ model.name }}</div>
+    <div>Телефон: {{ model.phone }}</div>
+{% endblock %}

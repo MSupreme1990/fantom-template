@@ -1,0 +1,4 @@
+Запрос консультации
+Имя: {{ model.name }}
+Телефон: {{ model.phone }}
+Дата создания: {{ model.created_at }}

@@ -1,0 +1,18 @@
+.b-param {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__label {
+    @include antialias;
+    color: flexy-color(gray);
+    font-size: em-calc(16px);
+  }
+
+  &__value {
+    @include antialias;
+    margin-left: 0.5em;
+    color: flexy-color(text);
+    font-size: em-calc(16px);
+  }
+}

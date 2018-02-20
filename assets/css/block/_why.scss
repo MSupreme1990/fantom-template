@@ -1,0 +1,23 @@
+.b-why {
+  padding: 2em 0;
+  box-sizing: border-box;
+  background: {
+    color: flexy-color(smoke);
+  }
+  margin: 4em 0;
+
+  &__content {
+    margin-left: 1em;
+    margin-top: 3em;
+  }
+
+  &__image {
+    @extend .b-image;
+  }
+
+  &__text {
+    @extend .b-typeset;
+    @include antialias;
+    font-size: 1.1em;
+  }
+}

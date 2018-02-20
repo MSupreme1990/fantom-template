@@ -1,0 +1,76 @@
+<div class="b-header">
+    <div class="b-header__top-line">
+        <div class="b-row">
+            <div class="b-col b-col_small_12 b-col_large_3">
+                <a href="/" class="b-logo__block">
+                    {#Указываем путь до логотипа Например (src="{{ asset('themes/svetobox/images/logo.png') }}")#}
+                    <img class="b-logo__img" src="http://placehold.it/258x50" alt="Логотип">
+                </a>
+            </div>
+            <div class="b-col b-col_small_12 b-col_large_4">
+                {% include "_search.html" %}
+            </div>
+
+            <div class="b-col b-col_small_12 b-col_large_5 b-visible b-visible_large_up">
+                <div class="b-header__menu">
+                    <div class="b-feature__item b-feature__item_wide">
+                        <div class="b-feature__icon b-feature__icon_support"></div>
+                        <div class="b-feature__content">
+                            <div class="b-feature__title">+7 (777) 711-71-17</div>
+                            <a href="{{ url('company_call') }}"
+                               data-modal
+                               class="b-feature__text b-feature__text_link">Обратный звонок</a>
+                        </div>
+                    </div>
+                    <div class="b-feature__item b-feature__item_wide">
+                        <div class="b-feature__icon b-feature__icon_cart"></div>
+                        <div class="b-feature__content">
+                            <div class="b-feature__title">Корзина покупок</div>
+                            <a href="{{ url('rise_cart_list') }}" class="b-feature__text b-feature__text_link">
+                            <span data-price-selector>
+                                {{ cart().getPrice()|number_format(2, '.', ' ') }} руб.
+                            </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#Mobile version#}
+            <div class="b-col b-col_small_12 b-col_large_5 b-hide b-hide_large_up">
+                <div class="b-header__menu-mobile">
+                    <div class="b-feature__icon-mobile b-feature__icon-mobile_cart"></div>
+                    <div class="b-feature__content-mobile">
+                        <div class="b-feature__title">Корзина покупок</div>
+                        <a href="{{ url('rise_cart_list') }}" class="b-feature__text b-feature__text_link">
+                            <span data-price-selector>
+                                {{ cart().getPrice()|number_format(2, '.', ' ') }} руб.
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="b-row">
+        <div class="b-col b-col_small_12 b-visible b-visible_large_up">
+            <div class="b-header-menu__line">
+                <div class="b-header__content">
+                    {% include "_menu.html" %}
+                </div>
+            </div>
+        </div>
+        <div class="b-col b-col_small_12 b-hide b-hide_large_up">
+            <div class="b-header-menu__line">
+                <div class="b-header-menu__toggle">
+                    <div>Меню</div>
+                    <div class="b-icon">dehaze</div>
+                </div>
+                <div class="b-header-menu__menu">
+                    {{ render_menu(54, 'menu/mobile.html')|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

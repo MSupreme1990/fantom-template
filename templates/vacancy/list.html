@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [['name' => 'Вакансии']] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Вакансии</h1>
+
+                {% for vacancy in vacancies %}
+                    {% include "vacancy/_vacancy.html" with ['vacancy' => vacancy] %}
+                {% endfor %}
+
+                {{ pagination_render(pager)|safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

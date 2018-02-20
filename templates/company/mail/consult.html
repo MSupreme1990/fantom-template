@@ -1,0 +1,8 @@
+{% extends "mail/template.html" %}
+
+{% block content %}
+    <h1>Запрос консультации</h1>
+    <div>Имя: {{ model.name }}</div>
+    <div>Телефон: {{ model.phone }}</div>
+    <div>Дата создания: {{ model.created_at }}</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+.b-product-sidebar {
+  &__block {
+    margin-bottom: 1em;
+
+    &_gray {
+      box-sizing: border-box;
+      border: {
+        width: 1px;
+        style: solid;
+        color: #fafafa;
+      }
+      padding: 1em;
+    }
+  }
+
+  &__header {
+    margin-bottom: 1em;
+  }
+
+  &__title {
+    @include antialias;
+    font-weight: bold;
+    color: #343a58;
+    font-size: 1.1em;
+  }
+
+  &__reset {
+    color: flexy-color();
+    cursor: pointer;
+  }
+
+  &__row {
+    margin-bottom: 1em;
+  }
+
+  &__label {
+    cursor: pointer;
+    color: #343a58;
+    font-size: em-calc(14px);
+  }
+
+  &__value {
+    margin-top: 0.5em;
+  }
+}

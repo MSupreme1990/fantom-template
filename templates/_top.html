@@ -1,0 +1,26 @@
+<div class="b-top">
+    <div class="b-row">
+        <div class="b-col b-col_small_6 b-col_large_4">
+            <a href="{{ url('company_call') }}" class="b-top__link" data-modal>
+                <span class="b-icon">&#xE61D;</span>
+                Перезвоните мне
+            </a>
+        </div>
+        <div class="b-col b-col_small_6 b-col_large_8">
+            <div class="b-top__menu">
+                {% if user %}
+                    <a href="{{ url('rise_order_list') }}" class="b-top__link">
+                        Личный кабинет
+                    </a>
+                {% else %}
+                    <a href="{{ url('user_login') }}" class="b-top__link">
+                        Вход
+                    </a>
+                    <a href="{{ url('user_registration') }}" class="b-top__link">
+                        Регистрация
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

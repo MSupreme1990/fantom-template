@@ -1,0 +1,75 @@
+.b-about {
+  padding: 4em 0 0 0;
+  margin: 4em 0;
+  box-sizing: border-box;
+  background: {
+    color: rgba(flexy-color(menu), 0.4);
+  }
+
+  &__title {
+    @include antialias;
+    font-weight: bold;
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(#000, 0.2);
+    margin-bottom: 1em;
+  }
+
+  &__video {
+    position: relative;
+    display: block;
+
+    &::after {
+      @include antialias;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      line-height: 214px;
+      z-index: 2;
+      content: 'play_circle_outline';
+      font-family: 'Material Icons';
+      font-size: 6em;
+      text-align: center;
+    }
+  }
+
+  &__container {
+    position: relative;
+    top: -40px;
+    margin-bottom: -80px;
+  }
+
+  &__content {
+    z-index: 4;
+    position: relative;
+    padding: 1em;
+    background: {
+      color: #fff;
+    }
+    box-shadow: 0 20px 20px 0 rgba(#000, 0.1);
+  }
+
+  &__image {
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    top: -80px;
+    width: 386px;
+    height: 212px;
+    background: {
+      image: url(../images/about_pic.png);
+      position: 0 0;
+      repeat: no-repeat;
+    }
+  }
+
+  &__text {
+    @include antialias;
+    line-height: 1.4;
+  }
+}

@@ -1,0 +1,43 @@
+$flexy-grid-wrapper-max-width: 1440px;
+$flexy-grid-gutter: 1em;
+
+$flexy-font: 'PT Sans', Roboto, Helvetica, Arial, sans-serif;
+$flexy-body-text-color: #000;
+$flexy-heading-text-color: $flexy-body-text-color;
+$flexy-heading-font: $flexy-font;
+// Defaults colors per project
+$flexy-theme-colors: (
+  default: #c1c1c1,
+  active: #cecece,
+  lightblue: #337ab7,
+  new: #cb4e4e,
+  gold: gold,
+  body: #fff,
+  divider: #e5efef,
+  cloud: #e5efef,
+  dividerdark: lighten(#373737, 10%),
+  menu: #c1c1c1,
+  blue: #5296e6,
+  gray: #667980,
+  metal: #667980,
+  page: gray,
+  dark: #2d2d2d,
+  red: #ab3c3c,
+  error: #dd162d,
+  warning: #ddb05e,
+  success: #4caf50,
+  primary: #2196f3,
+  light: #cacbd3,
+  text: #343a58
+);
+$flexy-block-input-focus-color: map-get($flexy-theme-colors, default);
+$flexy-theme-border-radius: 4px;
+// Default fonts sizes per project
+$flexy-theme-sizes: (
+  xsmall: 0.67em,
+  small: 0.83em,
+  medium: 1em,
+  large: 1.17em,
+  xlarge: 1.5em,
+  xxlarge: 2em
+);

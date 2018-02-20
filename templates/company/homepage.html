@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block footer_class %} b-footer_nomargin{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <div class="b-homepage-slider">
+                    {% for slide in get_slides('Banners') %}
+                        <div>
+                            <a class="b-homepage-slider__link" href="{{ slide.url }}"
+                               style="background-image: url({{ slide.image|imagine_filter('slider') }})">
+                                {{ slide }}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-space"></div>
+
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h2 class="b-heading">Выбор покупателей</h2>
+                <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_4">
+                    {% for rate in rating %}
+                        <div class="b-block-grid__item">
+                            {% include "rise/product/_product.html" with ['product' => rate] %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="b-space"></div>
+                <div class="b-divider b-divider_divider"></div>
+                <div class="b-space"></div>
+
+                <h2 class="b-heading">Новинки</h2>
+                <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_4">
+                    {% for hit in new %}
+                        <div class="b-block-grid__item">
+                            {% include "rise/product/_product.html" with ['product' => hit] %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-about">
+        <div class="b-wrapper">
+            <div class="b-row">
+                <div class="b-col b-col_small_12">
+                    <div class="b-about__container">
+                        <div class="b-about__title">О компании Dr. Nona International</div>
+                        <div class="b-about__image"></div>
+                        <div class="b-about__content">
+                            <div class="b-row">
+                                <div class="b-col b-col_small_12 b-col_medium_8">
+                                    <div class="b-about__text">
+                                        Компания Dr. Nona International – это беспрецедентная возможность ухода за
+                                        красотой и
+                                        здоровьем, а
+                                        также эффективная борьба с преждевременным старением. Косметические и
+                                        оздоровительные
+                                        препараты компании Dr. Nona — это продукция кардинально нового, передового
+                                        поколения,
+                                        сочетающая живительную силу архебактерии с целебными свойствами Мёртвого моря.
+                                        Вся
+                                        продукция
+                                        Dr. Nona создаётся в инновационной клинике Lenom. Исследования и разработки
+                                        осуществляются с
+                                        применением самого современного оборудования, в полном соответствии со строгими
+                                        требованиями
+                                        стандартов качества ISO 9001 и ISO GMP.
+                                    </div>
+                                    <div class="b-space"></div>
+                                    <a href="/page/o-kompanii" class="b-button">Узнать больше</a>
+                                </div>
+                                <div class="b-col b-col_small_12 b-col_medium_4">
+                                    <a href="https://youtu.be/9EapaorO6bc" class="b-about__video"
+                                       data-video="https://www.youtube.com/watch?v=9EapaorO6bc">
+                                        <img src="/bundles/company/images/drnona.jpg" alt="Dr Nona"
+                                             class="b-image"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#<div class="b-space"></div>#}
+    {#{% include "block/_features.html" %}#}
+{% endblock %}

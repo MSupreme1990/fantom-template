@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Контакты']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Контакты</h1>
+
+                <div class="b-row">
+                    <div class="b-col b-col_small_12 b-col_large_8">
+                        <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_3">
+                            <div class="b-block-grid__item">
+                                <div class="b-contact">
+                                    <div class="b-contact__icon">
+                                        <div class="b-icon">&#xE61D;</div>
+                                    </div>
+                                    <div class="b-contact__content">
+                                        <div class="b-info__label">Телефон</div>
+                                        <a href="tel:+79536712109" class="b-info__text">
+                                            +7 (953) 671-21-09
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b-block-grid__item">
+                                <div class="b-contact">
+                                    <div class="b-contact__icon">
+                                        <div class="b-icon">&#xE0BE;</div>
+                                    </div>
+                                    <div class="b-contact__content">
+                                        <div class="b-info__label">Электронная почта</div>
+                                        <a href="mailto:mail@drnona-kirov.ru" class="b-info__text">
+                                            mail@drnona-kirov.ru
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b-block-grid__item">
+                                <div class="b-contact">
+                                    <div class="b-contact__icon">
+                                        <div class="b-icon">&#xE192;</div>
+                                    </div>
+                                    <div class="b-contact__content">
+                                        <div class="b-info__label">Время работы</div>
+                                        <div class="b-info__text">
+                                            Пн-Пт с 9:00-21:00
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {#<div class="b-space b-space_large"></div>#}
+                        {#<div class="b-map" data-lat="58.597791" data-lng="49.655536" data-zoom="16"></div>#}
+                    </div>
+                    <div class="b-col b-col_small_12 b-col_large_4">
+                        <h2 class="b-heading">Напишите нам</h2>
+
+                        {{ form_render(form)|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

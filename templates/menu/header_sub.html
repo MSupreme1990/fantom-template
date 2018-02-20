@@ -1,0 +1,10 @@
+<div class="b-row">
+    {% for chunk in items|chunk(4) %}
+        <div class="b-col b-col_small_3">
+            {% for item in chunk %}
+                <a class="b-header-sub__link"
+                   href="{{ item.url }}">{{ item.name }}</a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

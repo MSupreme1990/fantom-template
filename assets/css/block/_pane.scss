@@ -1,0 +1,13 @@
+.b-pane {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include flexy-breakpoint(small) {
+    flex-wrap: wrap;
+  }
+
+  @include flexy-breakpoint(medium) {
+    flex-wrap: nowrap;
+  }
+}

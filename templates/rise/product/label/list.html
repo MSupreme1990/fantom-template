@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Каталог', 'url' => url('rise_index')],
+    ['name' => 'Акции и скидки'],
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                {% for label in labels %}
+                    <div class="b-pane">
+                        <h2 class="b-heading">{{ label }}</h2>
+                        <a href="{{ url('rise_product_label_view', ['slug' => label.slug]) }}">Подробнее</a>
+                    </div>
+
+                    {% if label.product.filter(['is_master' => true, 'is_published' => true]).count() > 0 %}
+                        <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_4">
+                            {% for product in label.product.filter(['is_master' => true, 'is_published' => true]).all() %}
+                                <div class="b-block-grid__item">
+                                    {% include "rise/product/_product.html" %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        <div class="b-typeset">Товары отсутствуют</div>
+                    {% endif %}
+
+                    {% if not loop.last %}
+                        <div class="b-divider b-divider_divider"></div>
+                        <div class="b-space"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

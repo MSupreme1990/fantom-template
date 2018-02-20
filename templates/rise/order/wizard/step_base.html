@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Оформление заказа'],
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-title">Оформление заказа</h1>
+
+                {% block steps %}
+                    <div class="b-order-step">
+                        <div class="b-order-step__step {% if step == 1 %}b-order-step__step_active{% endif %}">
+                            Ваши контакты
+                        </div>
+                        {% if payment_gateways|length > 0 %}
+                            <div class="b-order-step__arrow">
+                                <div class="b-icon">&#xE315;</div>
+                            </div>
+                            <div class="b-order-step__step {% if step == 2 %}b-order-step__step_active{% endif %}">
+                                Оплата
+                            </div>
+                        {% endif %}
+                        {% if delivery_gateways|length > 0 %}
+                            <div class="b-order-step__arrow">
+                                <div class="b-icon">&#xE315;</div>
+                            </div>
+                            <div class="b-order-step__step {% if step == 3 %}b-order-step__step_active{% endif %}">
+                                Доставка
+                            </div>
+                        {% endif %}
+                        <div class="b-order-step__arrow">
+                            <div class="b-icon">&#xE315;</div>
+                        </div>
+                        <div class="b-order-step__step {% if step == 4 %}b-order-step__step_active{% endif %}">
+                            Заказ
+                        </div>
+                    </div>
+                    <div class="b-space"></div>
+                {% endblock %}
+
+                {% block step_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

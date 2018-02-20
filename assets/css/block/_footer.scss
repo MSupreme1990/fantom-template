@@ -1,0 +1,25 @@
+.b-footer {
+  background-color: flexy-color(body);
+  margin: 0 -1em;
+  text-align: center;
+
+  @include flexy-breakpoint(large) {
+    text-align: start;
+  }
+
+  &__form {
+    padding: $flexy-grid-gutter;
+    background: {
+      color: #474E5B;
+    }
+    box-shadow: 5px 5px 45px -5px rgba(#000, 0.2);
+  }
+
+  &__content {
+    padding: 1em $flexy-grid-gutter 4em;
+  }
+
+  &__owner {
+    font-size: .9em;
+  }
+}

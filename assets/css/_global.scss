@@ -1,0 +1,19 @@
+//@include flexy-heading() {
+//  @include antialias;
+//  font-weight: normal;
+//}
+
+body {
+  background: {
+    color: #fff;
+  }
+}
+
+* {
+  outline: none;
+}
+
+a {
+  color: flexy-color(lightblue);
+  text-decoration: none;
+}

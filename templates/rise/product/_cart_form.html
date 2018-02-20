@@ -1,0 +1,76 @@
+{% if rise_has_options(product) or rise_has_variants(product) %}
+    <div class="b-segment">
+        {% if rise_has_options(product) %}
+            {% set productParams = product.params.all() %}
+            {% set data = rise_get_config_variants(product) %}
+            <h3 class="b-heading">Опции товара:</h3>
+            <div data-product-options>
+                {% for key, values in data.set %}
+                    <div class="b-form__row">
+                        <label class="b-label" for="{{ key }}">{{ data.attributes[key] }}</label>
+                        <select class="b-input b-input_select" name="{{ key }}" id="{{ key }}">
+                            {% for value in values %}
+                                <option value="{{ value }}"
+                                        {% if rise_param_is_selected(productParams, key, value) %} selected{% endif %}>{{ value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <script type="text/javascript" id="variants">
+                window.rise_product_variants = {{ rise_generate_variant_map(data.variants)|safe }};
+            </script>
+
+            {#{% for data in options %}#}
+            {#{% for key, value in data.combination %}#}
+            {#{{ key }}-{{ value }}#}
+            {#{% endfor %}#}
+            {#{{ data.variant }}#}
+            {#{% endfor %}#}
+        {% endif %}
+
+        {% if rise_has_variants(product) %}
+            {% set variants = rise_get_all_variants(product) %}
+            {% if variants|length > 0 %}
+                <h3 class="b-heading">Варианты товара:</h3>
+                <div class="b-block-grid b-block-grid_small_3">
+                    {% for variant in variants %}
+                        <div class="b-block-grid__item">
+                            {% set variantImage = variant.getImage() %}
+                            <a href="{{ variant.getAbsoluteUrl() }}" class="b-product-item__image"
+                                    {% if variantImage %} style="background-image: url({{ variantImage.image|imagine_filter('rise_product_thumb') }})"{% endif %}>
+                            </a>
+                            <div>
+                                <strong><a href="{{ variant.getAbsoluteUrl() }}">{{ variant }}</a></strong>
+                            </div>
+                            {% for param in variant.params.all() %}
+                                <div class="b-param">
+                                    <div class="b-param__label">{{ param.attr }}:</div>
+                                    <div class="b-param__value">
+                                        {% if param.value %}
+                                            {{ param.attr.prefix }} {{ param.value }} {{ param.attr.suffix }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endif %}
+
+<div class="b-space"></div>
+
+<form class="b-product-form" action="{{ url('rise_cart_add') }}" method="post" data-product-cart-form>
+    <input type="hidden" id="product_id" value="{{ product.id }}"/>
+    <div class="b-input-group">
+        <input type="number"
+               id="quantity"
+               class="b-input"
+               onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="1"/>
+        <input type="submit"{% if not product.isAvailable() %} disabled{% endif %} class="b-button"
+               value="Добавить в корзину"/>
+    </div>
+</form>

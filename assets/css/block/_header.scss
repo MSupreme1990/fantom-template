@@ -1,0 +1,133 @@
+.b-header {
+  position: relative;
+  z-index: 5;
+  background: {
+    color: #fff;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    padding: 1em 0;
+
+    @include flexy-breakpoint(large) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: {
+        color: #fff;
+      }
+      padding: 0 1em;
+    }
+  }
+
+  &__menu-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    flex-basis: 50%;
+  }
+
+  &__sub {
+    position: absolute;
+    width: em-calc($flexy-grid-wrapper-max-width) - ($flexy-grid-gutter * 2);
+    left: auto;
+    top: auto;
+    background: {
+      color: #fff;
+    }
+    border-radius: $flexy-theme-border-radius;
+    padding: 0.5em 0;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(#000, 0.2);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: scale(0.85);
+
+    &::after {
+      bottom: 100%;
+      left: 32px;
+      content: ' ';
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border: {
+        style: solid;
+        color: transparent transparent #fff transparent;
+        width: 5px;
+      }
+      margin-left: -5px;
+    }
+  }
+
+  &__phone {
+    color: flexy-color(text);
+    font-size: 1em;
+  }
+
+  &__content {
+    box-sizing: border-box;
+
+    @include flexy-breakpoint(large) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__text {
+    font-size: em-calc(12px);
+    color: flexy-color(light);
+  }
+
+  &__phone-link {
+    @include antialias;
+    font-size: em-calc(24px);
+    color: flexy-color();
+  }
+
+  &__top-line {
+    background: {
+      color: #fff;
+    }
+    padding: 1em 0;
+
+    @include flexy-breakpoint(large) {
+      padding: 2em 0;
+    }
+  }
+
+  &__a {
+    color: flexy-color(text);
+    @include antialias();
+
+    &:hover {
+      color: flexy-color();
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    background: {
+      color: #e7e7e7;
+    }
+    height: 24px;
+    margin: 0 1em;
+  }
+
+  &__icons {
+    height: 90px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__links {
+    text-align: right;
+  }
+}

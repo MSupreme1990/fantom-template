@@ -1,0 +1,10 @@
+.b-input {
+  @include antialias;
+
+  @include flexy-colors() {
+    &:focus {
+      box-shadow: 0 0 0 1px $flexy-current-color inset,
+        0 2px 8px rgba($flexy-current-color, 0.5);
+    }
+  }
+}

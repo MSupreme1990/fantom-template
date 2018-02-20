@@ -1,0 +1,10 @@
+{% extends "mail/template.html" %}
+
+{% block content %}
+    <h1>На сайте заполнена форма обратной связи</h1>
+    <p>Имя: {{ feedback.name }}</p>
+    <p>Электронная почта: {{ feedback.email }}</p>
+    <p>Телефон: {{ feedback.phone }}</p>
+    <p>Сообщение: {{ feedback.message }}</p>
+    <p>Дата создания: {{ feedback.created_at }}</p>
+{% endblock %}

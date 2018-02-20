@@ -1,0 +1,21 @@
+{%- extends "page/base.html" -%}
+
+{%- block content -%}
+    <h1 class="b-heading">{{ page.name }}</h1>
+
+    {%- if page.content -%}
+        <div class="b-page__content">
+            {{ page.content|safe }}
+        </div>
+    {%- endif -%}
+
+    <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_3">
+        {% for child in children %}
+            <div class="b-block-grid__item">
+                {% include "page/_page.html" with ['child' => child] %}
+            </div>
+        {% endfor %}
+    </div>
+
+    {{ pagination_render(pager)|safe }}
+{%- endblock -%}

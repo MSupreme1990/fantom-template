@@ -1,0 +1,56 @@
+.b-cart {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    width: 52px;
+    flex-basis: 52px;
+    position: relative;
+    text-align: right;
+  }
+
+  &__right {
+    flex: 1 0 auto;
+    padding-left: 1em;
+    box-sizing: border-box;
+  }
+
+  &__label {
+    font-size: 0.85em;
+  }
+
+  &__price {
+    color: #ea721d;
+  }
+
+  &__counter {
+    $size: 20px;
+
+    position: absolute;
+    right: -($size / 2);
+    top: -($size / 2);
+    height: $size;
+    width: $size;
+    line-height: $size;
+    font-weight: bold;
+    @include antialias;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(#000, 0.4);
+    text-align: center;
+    display: block;
+    background: {
+      color: #ea721d;
+    }
+    border-radius: 100%;
+    font-size: 0.8em;
+  }
+
+  &__link {
+  }
+
+  &__icon {
+    font-size: 2em !important;
+  }
+}

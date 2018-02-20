@@ -1,0 +1,12 @@
+.b-header-media {
+  &__link {
+    @include hide-text;
+    display: block;
+    height: 90px;
+    background: {
+      color: transparent;
+      position: 0 50%;
+      repeat: no-repeat;
+    }
+  }
+}

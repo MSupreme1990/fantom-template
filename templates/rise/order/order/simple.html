@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [['name' => 'Корзина'], ['name' => 'Оформление заказа']] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Оформление заказа</h1>
+                {{ form_start(form)|safe }}
+                <div class="b-row">
+                    <div class="b-col b-col_small_12 b-col_large_6">
+                        {{ form_row(form.children.name)|safe }}
+                        {{ form_row(form.children.email)|safe }}
+                        {{ form_row(form.children.phone)|safe }}
+                        {{ form_row(form.children.payment)|safe }}
+                    </div>
+                    <div class="b-col b-col_small_12 b-col_large_6">
+                        {{ form_row(form.children.delivery)|safe }}
+                        <div class="b-row">
+                            <div class="b-col b-col_small_12 b-col_large_6">
+                                {{ form_row(form.children.country)|safe }}
+                            </div>
+                            <div class="b-col b-col_small_12 b-col_large_6">
+                                {{ form_row(form.children.region)|safe }}
+                            </div>
+                        </div>
+                        <div class="b-space"></div>
+                        <div class="b-row">
+                            <div class="b-col b-col_small_12 b-col_large_6">
+                                {{ form_row(form.children.city)|safe }}
+                            </div>
+                            <div class="b-col b-col_small_12 b-col_large_6">
+                                {{ form_row(form.children.zip_code)|safe }}
+                            </div>
+                        </div>
+                        <div class="b-space"></div>
+                        {{ form_row(form.children.address)|safe }}
+                    </div>
+                </div>
+                <div class="b-space"></div>
+                {{ form_row(form.children.comment)|safe }}
+                <div class="b-space"></div>
+                {{ form_end(form)|safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% for node in menu %}
+    {% set children = node.getChildren() %}
+    <div class="b-sidebar__item{% if children|length > 0 %} b-sidebar__item_sub{% endif %}">
+        <a href="{{ node.getUrl() }}" class="b-sidebar__link">
+            <span class="b-sidebar__text">
+                {{ node.getName() }}
+            </span>
+            <span class="b-icon">keyboard_arrow_right</span>
+        </a>
+
+        {% if children|length > 0 %}
+            <div class="b-sidebar__sub">
+                {% for child in children %}
+                    <a class="b-sidebar__sublink" href="{{ child.getUrl() }}">
+                        {{ child.getName() }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}

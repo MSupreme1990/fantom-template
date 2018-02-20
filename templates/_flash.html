@@ -1,0 +1,14 @@
+{% set flash = request.getSession.getFlashBag().all() %}
+{% if flash|length > 0 %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                {% for messages in flash %}
+                    {% for flash_message in messages %}
+                        <div class="flash-notice">{{ flash_message }}</div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

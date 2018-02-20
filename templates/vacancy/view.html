@@ -1,0 +1,22 @@
+{% extends request.isXmlHttpRequest() ? "ajax.html" : "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Вакансии', 'url' => url('vacancy_list')],
+    ['name' => vacancy]
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">{{ vacancy }}</h1>
+                <div class="b-typeset">
+                    {{ vacancy.content|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

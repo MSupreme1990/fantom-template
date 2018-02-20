@@ -1,0 +1,6 @@
+{% for item in items %}
+    <div class="b-mobile__item">
+        <a class="b-mobile__link"
+           href="{{ item.url ? item.url : "#" }}">{{ item.name }}</a>
+    </div>
+{% endfor %}

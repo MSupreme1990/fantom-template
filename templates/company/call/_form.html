@@ -1,0 +1,12 @@
+{% extends "ajax.html" %}
+
+{% block content %}
+    <h1 class="b-heading">Заказать звонок</h1>
+    {{ form_render(form)|safe }}
+    <div class="b-personal-data">
+        Передавая информацию сайту вы принимаете условия
+        <a class="b-personal-data__link"
+           href="#"
+           target="_blank">"политики защиты персональных данных".</a>
+    </div>
+{% endblock %}

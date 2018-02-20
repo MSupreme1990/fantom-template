@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="b-row">
+        <div class="b-col b-col_small_12 b-col_large_3 b-visible b-visible_large_up">
+            {% include "_sidebar.html" %}
+        </div>
+        <div class="b-col b-col_small_12 b-col_large_9">
+            <div class="b-slider__homepage">
+                {% for slide in get_slides('homepage') %}
+                    <img class="b-slider__item"
+                         alt="{{ slide }}"
+                         src="{{ slide.image|imagine_filter('homepage_slider') }}"/>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="b-content__block">
+        <div class="b-content__content">
+            {{ get_block('homepage').content|safe }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Получить скидку']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Получить скидку</h1>
+
+                <div class="b-row">
+                    <div class="b-col b-col_small_12 b-col_medium_6">
+                        <h2 class="b-heading">Напишите нам для получения персональной скидки</h2>
+                        <div>
+                            Если вы хотите получить персональную скидку, напишите нам!
+                            Вы можете получить скидку 10% - 20% - 33% - 40%!
+                        </div>
+                        <div class="b-space"></div>
+                        {{ form_render(discount_form)|safe }}
+                        <div class="b-form__help">
+                            Передавая информацию сайту вы соглашаетесь с <a target="_blank" href="/page/politika-konfidencialnosti">"политикой конфиденциальности"</a>
+                        </div>
+                        <div class="b-space"></div>
+
+                        <div class="b-hide b-hide_medium_up">
+                            <div class="b-divider b-divider_divider"></div>
+                        </div>
+                    </div>
+                    <div class="b-col b-col_small_12 b-col_medium_6">
+                        <h2 class="b-heading">Получите консультацию</h2>
+                        <div>
+                            Если вам необходима персональная консультация по нашей продукции или
+                            способам приобретения и доставки - напишите нам! Мы вам перезвоним.
+                        </div>
+                        <div class="b-space"></div>
+                        {{ form_render(consult_form)|safe }}
+                        <div class="b-form__help">
+                            Передавая информацию сайту вы соглашаетесь с <a target="_blank" href="/page/politika-konfidencialnosti">"политикой конфиденциальности"</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+        ['name' => category ? category : 'Каталог']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    {#{% if category.show_category %}#}
+        {#{% include "rise/product/_view_categories.html" with ['title' => category ? category : 'Каталог'] %}#}
+    {#{% endif %}#}
+
+    {% include "rise/product/_view_products.html" with ['title' => category ? category : 'Каталог'] %}
+{% endblock %}

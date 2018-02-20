@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">{{ page }}</h1>
+                <div class="b-typeset">
+                    {{ page.content|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-space"></div>
+    <div class="b-divider b-divider_cloud"></div>
+    <div class="b-space"></div>
+{% endblock %}

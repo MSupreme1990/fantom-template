@@ -1,0 +1,50 @@
+.b-tab {
+
+  &__header {
+    border-bottom: 1px solid flexy-color();
+    box-shadow: none;
+
+    @include flexy-breakpoint(small) {
+      display: block;
+      border-bottom: none;
+    }
+
+    @include flexy-breakpoint(large) {
+      display: flex;
+    }
+  }
+
+  &__tab {
+    @include antialias;
+
+    @include flexy-breakpoint(small) {
+      border-radius: $flexy-theme-border-radius;
+    }
+
+    @include flexy-breakpoint(large) {
+      border-radius: $flexy-theme-border-radius $flexy-theme-border-radius 0 0;
+    }
+
+    &:hover,
+    &_active {
+      color: flexy-color(text);
+    }
+
+    &:hover {
+      background: {
+        color: rgba(#fff, 0.5);
+      }
+    }
+
+    &_active,
+    &_active:hover {
+      background: {
+        color: flexy-color();
+      }
+      color: #fff;
+    }
+  }
+
+  &__content {
+  }
+}

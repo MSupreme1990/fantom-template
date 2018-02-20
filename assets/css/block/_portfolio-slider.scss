@@ -1,0 +1,5 @@
+.b-portfolio-slider {
+  &__image {
+    @extend .b-image;
+  }
+}

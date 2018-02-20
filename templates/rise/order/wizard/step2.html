@@ -1,0 +1,34 @@
+{% extends "rise/order/wizard/step_base.html" %}
+
+{% block step_content %}
+    <div class="step-content">
+        {{ form_start(form)|safe }}
+        <div class="b-form__row">
+            {% for child in form.children.payment.children %}
+                <div class="b-checkbox">
+                    {{ form_widget(child, ['attr' => ['class' => 'b-checkbox__checkbox']])|safe }}
+                    {{ form_label(child, null, ['label_attr' => ['class' => 'b-checkbox__label']])|safe }}
+                </div>
+                {% for gateway in payment_gateways %}
+                    {% if child.vars.value == gateway.id %}
+                        <div class="b-typeset">
+                            {{ gateway.description|safe }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% if not loop.last %}
+                    <div class="b-space"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="b-pane">
+            <div>
+                {{ form_widget(form.children.prev)|safe }}
+            </div>
+            <div>
+                {{ form_widget(form.children.next)|safe }}
+            </div>
+        </div>
+        {{ form_end(form)|safe }}
+    </div>
+{% endblock %}

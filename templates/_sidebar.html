@@ -1,0 +1,25 @@
+<div class="b-product-sidebar">
+    <div class="b-sidebar__block">
+        <div class="b-title">Категории</div>
+        {{ render_menu(53, 'menu/sidebar.html')|safe }}
+    </div>
+
+    {#<div class="b-sidebar__block">#}
+        {#<div class="b-title">Хиты продаж</div>#}
+        {#{% for hit in hits %}#}
+            {#{% include "rise/product/_product.html" with ['product' => hit] %}#}
+        {#{% endfor %}#}
+    {#</div>#}
+
+    {#<div class="b-homepage-sidebar-slider">#}
+        {#{% for slide in get_slides('homepage_sidebar_slider') %}#}
+            {#<a href="{{ slide.url }}"#}
+               {#class="b-homepage-sidebar-slider__slide"#}
+               {#title="{{ slide }}"#}
+               {#style="background-image: url('{{ slide.image|imagine_filter('homepage_sidebar_slider') }}')">#}
+                {#<span class="b-homepage-sidebar-slider__title">{{ slide }}</span>#}
+                {#<span class="b-homepage-sidebar-slider__button">Перейти</span>#}
+            {#</a>#}
+        {#{% endfor %}#}
+    {#</div>#}
+</div>

@@ -1,0 +1,25 @@
+.b-spoiler {
+  &__container {
+    position: relative;
+    max-height: 300px;
+    overflow: hidden;
+
+    &::after {
+      background: {
+        image: linear-gradient(to top, transparent, #fff);
+      }
+      content: ' ';
+      bottom: 0;
+      left: 0;
+      height: 64px;
+      width: 100%;
+      display: block;
+      position: absolute;
+      z-index: 4;
+    }
+  }
+
+  &__readmore {
+    margin-top: 1em;
+  }
+}

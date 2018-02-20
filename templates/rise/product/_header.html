@@ -1,0 +1,22 @@
+<div class="b-pane">
+    <h1 class="b-title">{{ title }}</h1>
+    {% if category and not category.show_category %}
+        <div>
+            <div class="b-input-group">
+                <select class="b-input b-input_select"
+                        name="order" id="sort" onchange="window.location='?order=' + this.value;">
+                    <option value="" {{ request.query.get('order') == '' ? 'selected' : '' }}>
+                        По умолчанию
+                    </option>
+                    <option value="price" {{ request.query.get('order') == 'price' ? 'selected' : '' }}>
+                        По возрастанию
+                    </option>
+                    <option value="-price" {{ request.query.get('order') == '-price' ? 'selected' : '' }}>
+                        По убыванию
+                    </option>
+                </select>
+                <a href="{{ url('rise_index') }}" class="b-button">Очистить</a>
+            </div>
+        </div>
+    {% endif %}
+</div>

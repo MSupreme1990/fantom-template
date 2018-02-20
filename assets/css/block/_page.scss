@@ -1,0 +1,32 @@
+.b-page {
+  &__content {
+    @extend .b-typeset;
+  }
+
+  &__title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: flexy-color(dark);
+  }
+
+  &__image {
+    @extend .b-image;
+    margin-bottom: 1em;
+    border-radius: $flexy-theme-border-radius $flexy-theme-border-radius 0 0;
+  }
+
+  &__body {
+    box-sizing: border-box;
+    padding: 1em;
+    border-radius: 0 0 $flexy-theme-border-radius $flexy-theme-border-radius;
+  }
+
+  &__item {
+    border-radius: $flexy-theme-border-radius;
+    transition: box-shadow .25s ease;
+
+    &:hover {
+      box-shadow: 0 2px 25px 0 rgba(64, 71, 85, 0.10);
+    }
+  }
+}

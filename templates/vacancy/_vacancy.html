@@ -1,0 +1,11 @@
+<div class="b-vacancy" itemscope itemtype="http://schema.org/JobPosting">
+    <h3 class="b-vacancy__title b-heading" itemprop="title">
+        <a href="{{ url('vacancy_view', ['id' => vacancy.id]) }}">{{ vacancy }}</a>
+    </h3>
+    <div class="b-vacancy__date b-heading__caption">
+        Дата публикации: <span itemprop="datePosted">{{ vacancy.published_at }}</span>
+    </div>
+    <div class="b-vacancy__description" itemprop="description">
+        {{ vacancy.content|nl2br|safe }}
+    </div>
+</div>

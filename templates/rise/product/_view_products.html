@@ -1,0 +1,42 @@
+{% set showFilter = get_parameter_value('rise.product.show_filter') %}
+<div class="b-row">
+    {% if showFilter %}
+        <div class="b-col b-col_small_12 b-col_large_3">
+            {% include "rise/product/_sidebar.html" %}
+        </div>
+        <div class="b-col b-col_small_12 b-col_large_9">
+            {% include "rise/product/_header.html" with ['title' => title] %}
+            {% include "rise/product/_list.html" %}
+
+            {% set history = rise_product_history() %}
+            {% if history|length > 0 %}
+                <div class="b-divider b-divider_cloud"></div>
+                <h2 class="b-heading">Недавно вы смотрели</h2>
+                <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_4">
+                    {% for item in history %}
+                        <div class="b-block-grid__item">
+                            {% include "rise/product/_product.html" with ['product' => item] %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="b-col b-col_small_12">
+            {% include "rise/product/_list.html" %}
+
+            {% set history = rise_product_history() %}
+            {% if history|length > 0 %}
+                <div class="b-divider b-divider_cloud"></div>
+                <h2 class="b-heading">Недавно вы смотрели</h2>
+                <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_4">
+                    {% for item in history %}
+                        <div class="b-block-grid__item">
+                            {% include "rise/product/_product.html" with ['product' => item] %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

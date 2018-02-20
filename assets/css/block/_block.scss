@@ -1,0 +1,31 @@
+.b-block {
+  background: {
+    color: #f8f8f8;
+  }
+
+  &__title {
+    @include antialias;
+    color: #9699a7;
+    margin-bottom: 1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    padding: 2em;
+    box-sizing: border-box;
+  }
+
+  &__sub {
+    font-size: 1.4em;
+    color: #454b64;
+    @include antialias;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: #9699a7;
+    @extend .b-typeset;
+    @include antialias;
+  }
+}

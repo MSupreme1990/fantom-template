@@ -1,0 +1,12 @@
+.m-dark {
+  width: 100%;
+  background-color: flexy-color(dark);
+}
+
+%shadow {
+  box-shadow: 5px 5px 45px -5px rgba(107, 216, 206, 0.2);
+}
+
+.m-shadow {
+  @extend %shadow;
+}

@@ -1,0 +1,15 @@
+{% extends "user/base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Личный кабинет', 'url' => url('rise_order_list')],
+    ['name' => 'Изменение пароля']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="b-heading">Изменение пароля</h1>
+
+    {{ form_render(form)|safe }}
+{% endblock %}

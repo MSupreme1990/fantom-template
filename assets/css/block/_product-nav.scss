@@ -1,0 +1,40 @@
+.b-product-nav {
+  margin-top: 0.5em;
+  display: none;
+
+  @include flexy-breakpoint(large) {
+    display: block;
+  }
+  &__slider {
+  }
+
+  &__image {
+    @extend .b-image;
+    margin: 0 auto;
+    max-height: 80px;
+  }
+
+  &__item {
+    background: {
+      color: #fff;
+    }
+  }
+
+  .slick-slide {
+    padding: 2px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    opacity: 0.4;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      box-shadow: 0 0 0 2px flexy-color() inset;
+    }
+
+    &.slick-current {
+      opacity: 1;
+      box-shadow: 0 0 0 2px flexy-color() inset;
+    }
+  }
+}

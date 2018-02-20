@@ -1,0 +1,12 @@
+.b-partner-slider {
+  @extend .owl-carousel;
+  @extend .owl-theme;
+  margin: 2em 0;
+
+  &__image {
+    width: 130px !important;
+    height: 100px !important;
+    display: block;
+    margin: 0 auto;
+  }
+}

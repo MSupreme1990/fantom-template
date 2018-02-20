@@ -1,0 +1,112 @@
+.b-cart-table {
+  width: 100%;
+
+  &__tr {
+    &_tbody {
+      &:nth-child(odd) {
+        background: {
+          color: #fafafa;
+        }
+      }
+    }
+  }
+
+  &__th {
+    text-align: left;
+    color: #a6a6a6;
+    font-weight: 500;
+    @include antialias;
+    padding: 1em;
+  }
+
+  &__td {
+    vertical-align: middle;
+    padding: 1em;
+
+    &_number {
+      color: #a6a6a6;
+      font-weight: 500;
+      @include antialias;
+      font-size: em-calc(18px);
+      text-align: center;
+    }
+
+    &_price {
+      width: 140px;
+    }
+
+    &_product {
+      width: 480px;
+    }
+
+    &_image {
+      width: 100px;
+    }
+
+    &_quantity {
+      width: 100px;
+    }
+
+    &_actions {
+      width: 100px;
+    }
+  }
+
+  &__image {
+    background: {
+      color: #f8f8f8;
+      position: 50% 50%;
+      repeat: no-repeat;
+      size: cover;
+    }
+    width: 100px;
+    height: 100px;
+  }
+
+  &__tbody {
+    border: {
+      width: 1px 0;
+      style: solid;
+      color: darken(flexy-color(cloud), 5%);
+    }
+  }
+
+  &__link {
+    @include antialias;
+    color: flexy-color(text);
+  }
+
+  &__price {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__number {
+    @include antialias;
+    color: flexy-color(text);
+  }
+
+  &__postfix {
+    @include antialias;
+    color: #bababa;
+    margin-left: 0.5em;
+  }
+
+  &__remove {
+    svg {
+      width: 26px;
+      height: 26px;
+
+      path {
+        fill: #ccc;
+      }
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    @include antialias;
+    color: flexy-color(text);
+  }
+}

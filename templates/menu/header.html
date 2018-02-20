@@ -1,0 +1,11 @@
+{% for item in items %}
+    <div class="b-menu__item">
+        <a class="b-menu__link{% if item.items|length > 0 %} b-menu__link_drop{% endif %}"
+           href="{{ item.url ? item.url : "#" }}">{{ item.name }}</a>
+        {% if item.items|length > 0 %}
+            <div class="b-menu__dropdown">
+                {% include "menu/header_sub.html" with ['items' => item.items] %}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}

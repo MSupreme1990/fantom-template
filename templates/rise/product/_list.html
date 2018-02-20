@@ -1,0 +1,16 @@
+{% set showFilter = get_parameter_value('rise.product.show_filter') %}
+<div data-filter-ajax-container>
+    {% if products|length %}
+        <div class="b-block-grid b-block-grid_small_1 b-block-grid_medium_2 b-block-grid_large_{% if showFilter %}3{% else %}4{% endif %}">
+            {% for product in products %}
+                <div class="b-block-grid__item">
+                    {% include "rise/product/_product.html" with ['product' => product] %}
+                </div>
+            {% endfor %}
+        </div>
+
+        {{ pagination_render(pager)|safe }}
+    {% else %}
+        <p>Товары не найдены</p>
+    {% endif %}
+</div>

@@ -1,0 +1,17 @@
+.b-footer-logo {
+  user-select: none;
+
+  &__text {
+    font-weight: 600;
+    font-size: 3.2em;
+    color: #f4f4f4;
+    display: inline-block;
+  }
+
+  &__dot {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 4em;
+    color: #f00;
+  }
+}

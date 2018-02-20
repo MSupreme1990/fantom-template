@@ -1,0 +1,27 @@
+.b-category-link {
+  display: block;
+
+  &__image {
+    @extend .b-image;
+
+    &_noimage {
+      background: {
+        color: #fafafa;
+      }
+      width: 372px;
+      height: 210px;
+      display: block;
+    }
+  }
+
+  &__name {
+    background: {
+      color: #fff;
+    }
+    padding: 1em;
+    color: flexy-color(text);
+    display: block;
+    font-size: em-calc(22px);
+    @include antialias;
+  }
+}

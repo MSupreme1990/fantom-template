@@ -1,0 +1,29 @@
+.b-shop-card {
+  display: block;
+
+  &__body {
+    font-size: 0.8em;
+    padding: 1em 0;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 2em;
+    color: flexy-color(dark);
+  }
+
+  &__city {
+  }
+
+  &__image {
+    @extend .b-image;
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  &__address,
+  &__phone,
+  &__name {
+    display: block;
+  }
+}

@@ -1,0 +1,56 @@
+$social-size: 28px;
+$social: (
+  vk: (color: #5a7fa6, symbol: ''),
+  facebook: (color: #3e5b98, symbol: ''),
+  twitter: (color: #4da7de, symbol: ''),
+  google: (color: #4285f4, symbol: ''),
+  yandex: (color: #ff0000, symbol: ''),
+  odnoklassniki: (color: #f48420, symbol: ''),
+  instagram: (color: #000000, symbol: '')
+);
+
+.b-social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__link {
+    @include antialias;
+
+    display: block;
+    width: $social-size;
+    height: $social-size;
+    line-height: $social-size;
+    position: relative;
+    margin-right: 0.5em;
+    font-family: 'Socicon';
+    border-radius: 100%;
+    font-size: 1em;
+    text-align: center;
+    transition: all 0.2s ease;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    @each $prefix, $params in $social {
+      &_#{$prefix} {
+        color: #fff;
+        background: {
+          color: map-get($params, color);
+        }
+
+        &::after {
+          content: map-get($params, symbol);
+        }
+
+        &:hover {
+          color: #fff;
+          background: {
+            color: map-get($params, color);
+          }
+        }
+      }
+    }
+  }
+}

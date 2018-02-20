@@ -1,0 +1,22 @@
+.b-product-category {
+  &__link {
+    display: block;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    @include antialias;
+    color: flexy-color(text);
+
+    &_0 {
+      font-size: em-calc(20px);
+    }
+
+    &_1 {
+    }
+
+    &:hover {
+      background: {
+        color: #fafafa;
+      }
+    }
+  }
+}

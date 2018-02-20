@@ -1,0 +1,13 @@
+.b-content {
+  &__block {
+    margin: 2em 0;
+  }
+
+  &__content {
+    @extend .b-typeset;
+
+    ol, ul {
+      margin-left: 2em;
+    }
+  }
+}

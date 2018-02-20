@@ -1,0 +1,25 @@
+{% extends request.isXmlHttpRequest() ? "ajax.html" : "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+        ['name' => 'Корзина', 'url' => url('rise_cart_list')],
+        ['name' => 'Быстрое оформление заказа']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-title">Быстрое оформление заказа</h1>
+
+                <p>Пожалуйста укажите ваше имя и номер телефона для связи.</p>
+                <p>Мы свяжемся с вами для уточнения деталей заказа.</p>
+                <div class="b-divider b-divider_divider"></div>
+
+                {{ form_render(form)|safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

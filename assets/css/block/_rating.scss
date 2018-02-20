@@ -1,0 +1,28 @@
+.b-rating {
+  unicode-bidi: bidi-override;
+  text-align: center;
+
+  &__star {
+    @include antialias;
+    color: flexy-color(gray);
+    cursor: default;
+    display: inline-block;
+    position: relative;
+    font-size: 1.4em;
+
+    &_input {
+      cursor: pointer;
+    }
+
+    &_fill {
+      color: transparent;
+
+      &::before {
+        content: '\2605';
+        position: absolute;
+        right: 0;
+        color: flexy-color(gold);
+      }
+    }
+  }
+}

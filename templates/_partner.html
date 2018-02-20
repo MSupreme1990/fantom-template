@@ -1,0 +1,17 @@
+<div class="b-wrapper">
+    <div class="b-row">
+        <div class="b-col b-col_small_12">
+            <div class="b-partner">
+                <div class="b-partner-slider">
+                    {% for slide in get_slides('partner') %}
+                        <div>
+                            <img class="b-partner-slider__image"
+                                 src="{{ slide.image|imagine_filter('partner') }}"
+                                 alt="{{ slide }}"/>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

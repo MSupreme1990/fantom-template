@@ -1,0 +1,20 @@
+.b-info {
+  &__label,
+  &__text {
+    @include antialias;
+  }
+
+  &__label {
+    &_footer {
+      color: lighten(flexy-color(metal), 20%);
+    }
+  }
+
+  &__text {
+    &_footer {
+      color: flexy-color(metal);
+      font-size: 1em;
+      font-weight: normal;
+    }
+  }
+}

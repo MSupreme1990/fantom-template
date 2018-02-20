@@ -1,0 +1,8 @@
+.b-breadcrumb {
+  margin: 1em 0;
+  @include antialias;
+
+  &__item {
+    font-size: 0.95em;
+  }
+}

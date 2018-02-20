@@ -1,0 +1,10 @@
+{% extends "mail/template.html" %}
+
+{% block content %}
+    <h1>К вашему заказу №{{ order.id }} добавлен новый комментарий</h1>
+
+    <p><strong>Комментарий:</strong></p>
+    <p>{{ comment.comment }}</p>
+
+    <p><a class="b-button" href="{{ order_url }}">Перейти к заказу</a></p>
+{% endblock %}

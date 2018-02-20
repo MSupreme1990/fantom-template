@@ -1,0 +1,83 @@
+.b-product-item {
+  position: relative;
+  box-sizing: border-box;
+  padding: 1em;
+  background: {
+    color: #fff;
+  }
+  border-radius: $flexy-theme-border-radius;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    z-index: 10;
+    box-shadow: 0 4px 32px rgba(#000, 0.3);
+  }
+
+  &__image {
+    display: block;
+    position: relative;
+    background: {
+      color: #fff;
+      position: 50% 50%;
+      repeat: no-repeat;
+      size: contain;
+    }
+    height: 282px;
+  }
+
+  &__name {
+    color: flexy-color(text);
+    font-weight: bold;
+    @include antialias;
+    display: block;
+    @include ellipsis;
+  }
+
+  &__price {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    @include antialias;
+  }
+
+  &__panel {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__content {
+    margin-top: 1em;
+  }
+
+  &__entity {
+    font-size: 0.83em;
+    color: flexy-color(gray);
+    @include antialias;
+  }
+
+  &__cart {
+    font-weight: bold;
+    @include antialias;
+    background: {
+      color: flexy-color(warning);
+    }
+    color: #fff;
+    border-radius: 2em;
+    padding: 0.2em 1em;
+  }
+
+  &__label {
+    display: inline-block;
+    color: #fff;
+    padding: 0.2em 0.6em;
+    font-size: em-calc(14px);
+    @include antialias;
+    border-radius: 0 $flexy-theme-border-radius $flexy-theme-border-radius 0;
+    position: absolute;
+    left: 0;
+    top: auto;
+    margin-top: 1em;
+  }
+}

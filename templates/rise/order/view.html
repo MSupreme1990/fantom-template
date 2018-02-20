@@ -1,0 +1,128 @@
+{% extends "user/base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Мои заказы', 'url' => url('rise_order_list')],
+    ['name' => order]
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-row">
+        <div class="b-col b-col_small_12">
+            <h1 class="b-title">{{ order }} от {{ order.created_at }}</h1>
+
+            {% if order.payment and not rise_payment_is_offline(order.payment) %}
+                <a class="b-button" target="_blank"
+                   href="{{ url('rise_payment_purchase', ['id' => order.id]) }}">Перейти к оплате</a>
+
+                <div class="b-divider b-divider_cloud"></div>
+            {% endif %}
+
+            <h2 class="b-title">Заказ</h2>
+            <div class="b-block-grid b-block-grid_small_3">
+                <div class="b-block-grid__item">
+                    <div class="b-info__label">Статус заказа</div>
+                    <div class="b-info__text">{{ order.getStatus() }}</div>
+                </div>
+                <div class="b-block-grid__item">
+                    <div class="b-info__label">Дата оформления</div>
+                    <div class="b-info__text">{{ order.created_at }}</div>
+                </div>
+                {% if order.payment %}
+                    <div class="b-block-grid__item">
+                        <div class="b-info__label">Способ оплаты</div>
+                        <div class="b-info__text">{{ order.payment }}</div>
+                    </div>
+                {% endif %}
+                {% if order.delivery %}
+                    <div class="b-block-grid__item">
+                        <div class="b-info__label">Способ доставки</div>
+                        <div class="b-info__text">{{ order.delivery }}</div>
+                    </div>
+                {% endif %}
+                <div class="b-block-grid__item">
+                    <div class="b-info__label">Номер отслеживания</div>
+                    <div class="b-info__text">{{ order.track_number ? order.track_number : 'Не указан' }}</div>
+                </div>
+            </div>
+
+            <div class="b-space"></div>
+
+            {% if customer %}
+                <h2 class="b-title">Контактные данные</h2>
+                <div class="b-block-grid b-block-grid_small_3">
+                    <div class="b-block-grid__item">
+                        <div class="b-info__label">ФИО</div>
+                        <div class="b-info__text">{{ customer.last_name }} {{ customer.first_name }} {{ customer.middle_name }}</div>
+                    </div>
+                    <div class="b-block-grid__item">
+                        <div class="b-info__label">Электронная почта</div>
+                        <div class="b-info__text">{{ customer.email }}</div>
+                    </div>
+                    <div class="b-block-grid__item">
+                        <div class="b-info__label">Телефон</div>
+                        <div class="b-info__text">{{ customer.phone }}</div>
+                    </div>
+                    <div class="b-block-grid__item">
+                        <div class="b-info__label">Адрес доставки</div>
+                        <div class="b-info__text">{{ customer.country }} {{ customer.region }} {{ customer.city }} {{ customer.address }} {{ customer.zip_code }}</div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="b-space"></div>
+
+            {% if orderProducts|length > 0 %}
+                <h2 class="b-title">Товары</h2>
+                <table class="b-table">
+                    <thead class="b-table__thead">
+                    <tr class="b-table__tr b-table__tr_tbody">
+                        <th class="b-table__th b-table__th_thead">Название</th>
+                        <th class="b-table__th b-table__th_thead">Стоимость</th>
+                        <th class="b-table__th b-table__th_thead">Количество</th>
+                        <th class="b-table__th b-table__th_thead">Сумма</th>
+                    </tr>
+                    </thead>
+                    <tbody class="b-table__tbody">
+                    {% for orderProduct in orderProducts %}
+                        <tr class="b-table__tr b-table__tr_tbody">
+                            <td class="b-table__td b-table__td_tbody">
+                                {% if orderProduct.product %}
+                                    <a href="{{ orderProduct.product.getAbsoluteUrl() }}" target="_blank">
+                                        {{ orderProduct.name }}
+                                    </a>
+                                {% else %}
+                                    {{ orderProduct.name }}
+                                {% endif %}
+                            </td>
+                            <td class="b-table__td b-table__td_tbody">
+                                {{ orderProduct.price|number_format(2, '.', ' ') }} руб.
+                            </td>
+                            <td class="b-table__td b-table__td_tbody">
+                                {{ orderProduct.quantity }}
+                            </td>
+                            <td class="b-table__td b-table__td_tbody">
+                                {{ orderProduct.price_total|number_format(2, '.', ' ') }} руб.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+            <div class="b-space"></div>
+
+            <h3>Комментарии</h3>
+
+            {% for comment in comments %}
+                {% include "rise/order/comment/_comment.html" %}
+            {% endfor %}
+
+            {{ pagination_render(pager)|safe }}
+
+            {{ form_render(form)|safe }}
+        </div>
+    </div>
+{% endblock %}

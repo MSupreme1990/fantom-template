@@ -1,0 +1,5 @@
+Просьба персональной скидки
+Имя: {{ model.name }}
+Телефон: {{ model.phone }}
+Телефон: {{ model.email }}
+Дата создания: {{ model.created_at }}

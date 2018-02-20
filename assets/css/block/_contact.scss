@@ -1,0 +1,56 @@
+$contact-icon-width: 42px;
+
+.b-contact {
+  margin-bottom: 2em;
+
+  &__icon {
+    width: $contact-icon-width;
+    height: 42px;
+    float: left;
+
+    .b-icon {
+      color: flexy-color();
+      font-size: 2em;
+    }
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &__th {
+    width: 140px;
+    text-align: left;
+  }
+
+  &__label {
+    font-weight: 500;
+    color: #b1b1b1;
+    @include antialias;
+
+    &_small {
+      font-size: em-calc(14px);
+    }
+
+    &_large {
+      font-size: em-calc(24px);
+    }
+  }
+
+  &__text {
+    color: #2e355a;
+    @include antialias;
+
+    &_small {
+      font-size: em-calc(14px);
+    }
+
+    &_large {
+      font-size: em-calc(20px);
+    }
+  }
+
+  &__content {
+    margin-left: $contact-icon-width + 10px;
+  }
+}

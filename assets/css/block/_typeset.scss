@@ -1,0 +1,7 @@
+.b-typeset {
+  img {
+    height: auto !important;
+    width: auto !important;
+    @extend .b-image;
+  }
+}

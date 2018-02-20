@@ -1,0 +1,26 @@
+{% extends "rise/order/wizard/step_base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [['name' => 'Корзина'], ['name' => 'Шаг 1']] %}
+    {% parent %}
+{% endblock %}
+
+{% block step_content %}
+    <div class="step-content">
+        {{ form_start(form)|safe }}
+        {% for key, child in form %}
+            {% if key == 'next' or key == 'prev' %}
+                {% continue %}
+            {% endif %}
+            {{ form_row(child)|safe }}
+        {% endfor %}
+        <div class="b-pane">
+            <div></div>
+            <div>
+                {{ form_widget(form.children.next)|safe }}
+            </div>
+        </div>
+        {{ form_end(form)|safe }}
+    </div>
+{% endblock %}
+

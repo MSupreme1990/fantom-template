@@ -1,0 +1,14 @@
+.b-product-image {
+  &__slider {
+  }
+
+  &__link {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__image {
+    @extend .b-image;
+    margin: 0 auto;
+  }
+}

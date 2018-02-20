@@ -1,0 +1,15 @@
+<div class="b-page__item">
+    {% if child.image %}
+        <a href="{{ url('page_view', ['url' => child.url]) }}">
+            <img class="b-page__image" src="{{ child.image|imagine_filter('page_detail') }}" alt="">
+        </a>
+    {% endif %}
+    <div class="b-page__body">
+        <a class="b-page__title" href="{{ url('page_view', ['url' => child.url]) }}">
+            {{ child.name }}
+        </a>
+        <div class="b-page__content">
+            {{ child.content_short|safe }}
+        </div>
+    </div>
+</div>

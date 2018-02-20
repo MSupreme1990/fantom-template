@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Страница не найдена']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Страница не найдена</h1>
+                <div class="b-typeset">
+                    <p>Возможно страница была удалена, перемещена или никогда не существовала.</p>
+                    <p>Попробуйте перейти на <a href="/">главную страницу</a> и найти интересующий вас раздел.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

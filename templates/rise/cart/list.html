@@ -1,0 +1,242 @@
+{% extends request.isXmlHttpRequest() ? "ajax.html" : "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [['name' => 'Корзина']] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="cart-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Корзина</h1>
+
+                {% if cart.all()|length > 0 %}
+                    <div class="b-hide b-hide_large_up">
+                        <table class="b-cart-table">
+                            <tbody class="b-cart-table__tbody">
+                            {% for key, position in cart().all() %}
+                                {% set product = position.getProduct() %}
+                                <tr class="b-cart-table__tr b-cart-table__tr_tbody">
+                                    <td class="b-cart-table__td">
+                                        {% if product.image.image %}
+                                            <img src="{{ product.image.image|imagine_filter('product_cart_image') }}"
+                                                 alt="{{ product }}" class="b-cart-table__image"/>
+                                        {% endif %}
+                                    </td>
+                                    <td class="b-cart-table__td">
+                                        <a class="b-cart-table__link"
+                                           href="{{ product.getAbsoluteUrl() }}">{{ product }}</a>
+                                    </td>
+                                </tr>
+                                <tr class="b-cart-table__tr b-cart-table__tr_tbody">
+                                    <td class="b-cart-table__td b-cart-table__td_price">
+                                        <div class="b-cart-table__price">
+                                            <div class="b-cart-table__number">
+                                                {{ product.getPrice()|number_format(2, '.', ' ') }}
+                                            </div>
+                                            <div class="b-cart-table__postfix">руб.</div>
+                                        </div>
+                                        <div class="b-cart-table__price">
+                                            <div class="b-cart-table__number">
+                                                {{ position.getPrice()|number_format(2, '.', ' ') }}
+                                            </div>
+                                            <div class="b-cart-table__postfix">
+                                                руб.
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="{{ url('rise_cart_remove') }}"
+                                               data-cart-remove
+                                               data-quantity-selector=".b-cart__counter"
+                                               data-price-selector=".b-cart__amount"
+                                               data-html-selector=".cart-wrapper"
+                                               data-key="{{ position.unique_id }}"
+                                               data-confirm="Удалить товар из корзины?"
+                                               class="b-cart-table__remove">
+                                                Удалить
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="b-cart-table__td b-cart-table__td_quantity" align="right">
+                                        <div class="b-counter">
+                                            <div class="b-counter__buttons">
+                                                <a href="{{ url('rise_cart_quantity') }}"
+                                                   data-key="{{ key }}"
+                                                   data-cart-operation="inc"
+                                                   data-html-selector=".cart-wrapper"
+                                                   data-quantity-selector=".b-cart__counter"
+                                                   data-price-selector=".b-cart__amount"
+                                                   data-cart-counter
+                                                   data-cart-selector=".b-counter__text"
+                                                   class="b-counter__operation b-counter__operation_inc">+</a>
+                                                <a href="{{ url('rise_cart_quantity') }}"
+                                                   data-key="{{ key }}"
+                                                   data-cart-operation="dec"
+                                                   data-html-selector=".cart-wrapper"
+                                                   data-quantity-selector=".b-cart__counter"
+                                                   data-price-selector=".b-cart__amount"
+                                                   data-cart-counter
+                                                   data-cart-selector=".b-counter__text"
+                                                   class="b-counter__operation b-counter__operation_dec">-</a>
+                                            </div>
+                                            <span class="b-counter__text">{{ position.getQuantity() }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot class="b-cart-table__tfoot">
+                            <tr class="b-cart-table__tr">
+                                <td class="b-cart-table__td">
+                                    <div class="b-cart-table__text">
+                                        Сумма всех товаров:
+                                    </div>
+                                </td>
+                                <td class="b-cart-table__td">
+                                    <div class="b-cart-table__price">
+                                        <div class="b-cart-table__number">
+                                            {{ cart.getPrice()|number_format(2, '.', ' ') }}
+                                        </div>
+                                        <div class="b-cart-table__postfix">
+                                            руб.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="b-visible b-visible_large_up">
+                        <table class="b-cart-table">
+                            <thead class="b-cart-table__thead">
+                            <tr class="b-cart-table__tr">
+                                <th class="b-cart-table__th"></th>
+                                <th class="b-cart-table__th" colspan="2">Товар</th>
+                                <th class="b-cart-table__th" align="right">Стоимость</th>
+                                <th class="b-cart-table__th" align="right">Количество</th>
+                                <th class="b-cart-table__th" align="right">Сумма</th>
+                                <th class="b-cart-table__th" align="right"></th>
+                            </tr>
+                            </thead>
+                            <tbody class="b-cart-table__tbody">
+                            {% for key, position in cart().all() %}
+                                {% set product = position.getProduct() %}
+                                <tr class="b-cart-table__tr b-cart-table__tr_tbody">
+                                    <td class="b-cart-table__td b-cart-table__td_number">{{ i + 1 }}</td>
+                                    <td class="b-cart-table__td b-cart-table__td_image">
+                                        {% if product.image.image %}
+                                            <div style="background-image: url({{ product.image.image|imagine_filter('product_cart_image') }})"
+                                                 class="b-cart-table__image"></div>
+                                        {% else %}
+                                            <div class="b-cart-table__image"></div>
+                                        {% endif %}
+                                    </td>
+                                    <td class="b-cart-table__td b-cart-table__td_product">
+                                        <a class="b-cart-table__link"
+                                           href="{{ product.getAbsoluteUrl() }}">{{ product }}</a>
+                                    </td>
+                                    <td class="b-cart-table__td b-cart-table__td_price">
+                                        <div class="b-cart-table__price">
+                                            <div class="b-cart-table__number">
+                                                {{ product.getPrice()|number_format(2, '.', ' ') }}
+                                            </div>
+                                            <div class="b-cart-table__postfix">
+                                                руб.
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="b-cart-table__td b-cart-table__td_quantity" align="right">
+                                        <div class="b-counter">
+                                            <div class="b-counter__buttons">
+                                                <a href="{{ url('rise_cart_quantity') }}"
+                                                   data-key="{{ key }}"
+                                                   data-cart-operation="inc"
+                                                   data-html-selector=".cart-wrapper"
+                                                   data-quantity-selector=".b-cart__counter"
+                                                   data-price-selector=".b-cart__amount"
+                                                   data-cart-counter
+                                                   data-cart-selector=".b-counter__text"
+                                                   class="b-counter__operation b-counter__operation_inc">+</a>
+                                                <a href="{{ url('rise_cart_quantity') }}"
+                                                   data-key="{{ key }}"
+                                                   data-cart-operation="dec"
+                                                   data-html-selector=".cart-wrapper"
+                                                   data-quantity-selector=".b-cart__counter"
+                                                   data-price-selector=".b-cart__amount"
+                                                   data-cart-counter
+                                                   data-cart-selector=".b-counter__text"
+                                                   class="b-counter__operation b-counter__operation_dec">-</a>
+                                            </div>
+                                            <span class="b-counter__text">{{ position.getQuantity() }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="b-cart-table__td b-cart-table__td_price" align="right">
+                                        <div class="b-cart-table__price">
+                                            <div class="b-cart-table__number">
+                                                {{ position.getPrice()|number_format(2, '.', ' ') }}
+                                            </div>
+                                            <div class="b-cart-table__postfix">
+                                                руб.
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="b-cart-table__td b-cart-table__td_actions" align="right">
+                                        <a href="{{ url('rise_cart_remove') }}"
+                                           data-cart-remove
+                                           data-quantity-selector=".b-cart__counter"
+                                           data-price-selector=".b-cart__amount"
+                                           data-html-selector=".cart-wrapper"
+                                           data-key="{{ position.unique_id }}"
+                                           data-confirm="Удалить товар из корзины?"
+                                           class="b-cart-table__remove">
+                                            <svg viewBox="0 0 24 24" height="100%" width="100%"
+                                                 preserveAspectRatio="xMidYMid meet" fit=""
+                                                 style="pointer-events: none; display: block;">
+                                                <g>
+                                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot class="b-cart-table__tfoot">
+                            <tr class="b-cart-table__tr">
+                                <td class="b-cart-table__td"></td>
+                                <td class="b-cart-table__td" colspan="4">
+                                    <div class="b-cart-table__text">
+                                        Сумма всех товаров:
+                                    </div>
+                                </td>
+                                <td class="b-cart-table__td" colspan="2">
+                                    <div class="b-cart-table__price">
+                                        <div class="b-cart-table__number">
+                                            {{ cart.getTotalPrice()|number_format(2, '.', ' ') }}
+                                        </div>
+                                        <div class="b-cart-table__postfix">
+                                            руб.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="b-space"></div>
+
+                    <div>
+                        <a href="{{ url('rise_cart_quick') }}" data-modal class="b-button">Купить в 1
+                            клик</a>
+                        <a href="{{ url('rise_order_wizard') }}" class="b-button">Оформить
+                            заказ</a>
+                    </div>
+                {% else %}
+                    <div>Ваша корзина пуста</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

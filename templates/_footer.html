@@ -1,0 +1,68 @@
+<div class="b-wrapper">
+    <div class="b-row">
+        <div class="b-col b-col_small_12">
+            <div class="b-footer">
+
+                <div class="b-footer__form">
+                    <div class="b-row">
+                        <div class="b-col b-col_small_12 b-col_large_1 b-visible b-visible_large_up"></div>
+                        <div class="b-col b-col_small_12 b-col_medium_6 b-col_large_5">
+                            <div class="b-footer-subscribe">
+                                <div class="b-footer-subscribe__icon"></div>
+                                <div class="b-footer-subscribe__content">
+                                    <div class="b-footer-subscribe__title">
+                                        Подпишитесь
+                                    </div>
+                                    <div class="b-footer-subscribe__text">
+                                        Рассылаем только значимую информацию
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b-col b-col_small_12 b-col_medium_6 b-col_large_5">
+                            <div class="b-footer-subscribe__content">
+                            <form action="#" class="b-footer-subscribe__form">
+                                <input type="text" class="b-input b-footer-subscribe__input" placeholder="Введите email">
+                                <a class="b-button b-footer-subscribe__button">Подписаться</a>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="b-col b-col_small_12 b-col_large_1 b-visible b-visible_large_up"></div>
+                    </div>
+                </div>
+
+                <div class="b-footer__content">
+                    <div class="b-row">
+                        <div class="b-col b-col_small_12 b-col_large_4">
+                            <div class="b-footer-logo">
+                                <div class="b-footer-logo__text">logo</div>
+                            </div>
+                        </div>
+                        <div class="b-col b-col_small_12 b-col_large_8 b-visible b-visible_large_up">
+
+                        </div>
+                    </div>
+                    <div class="b-row">
+                        <div class="b-col b-col_small_12 b-col_large_4">
+                            <div class="b-footer__owner">
+                                {{ get_block('footer_owner').content|safe }}
+                            </div>
+                        </div>
+                        <div class="b-col b-col_small_12 b-col_large_8">
+                            <div class="b-block-grid b-block-grid_small_1 b-block-grid_large_4">
+                                {% for part in get_menu(56) %}
+                                    <div class="b-block-grid__item">
+                                        <div class="b-footer-menu__title">{{ part.name }}</div>
+                                        {% for item in part.items %}
+                                            <a href="{{ item.url }}" class="b-footer-menu__link">{{ item.name }}</a>
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

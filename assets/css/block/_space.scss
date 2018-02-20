@@ -1,0 +1,18 @@
+$flexy-block-space: (default: 1em, small: 0.5em, large: 2em, xlarge: 4em)
+  !default;
+
+.b-space {
+  @each $prefix, $size in $flexy-block-space {
+    @if $prefix == default {
+      height: $size;
+
+      &_#{$prefix} {
+        height: $size;
+      }
+    } @else {
+      &_#{$prefix} {
+        height: $size;
+      }
+    }
+  }
+}

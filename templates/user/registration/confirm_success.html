@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Регистрация', 'url' => url('user_registration')],
+    ['name' => 'Успешная регистрация']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Успешная регистрация</h1>
+
+                <div class="b-typeset">
+                    Вы успешно зарегистрировались на сайте. Теперь вы можете
+                    <a href="{{ url('user_login') }}">войти на сайт</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+.b-collection-target {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  &__link {
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    margin-bottom: 0.2em;
+    @extend .b-badge;
+    @extend .b-badge_cloud;
+    color: flexy-color(text);
+    transition: all 0.2s ease;
+
+    &:hover {
+      @extend .b-badge_new;
+      color: #fff;
+    }
+  }
+}

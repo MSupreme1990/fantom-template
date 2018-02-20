@@ -1,0 +1,14 @@
+<h2 class="b-heading">Войдите на сайт через социальные сети</h2>
+<div class="b-typeset">
+    <p>
+        Вы можете войти на сайт с помощью указанных ниже социальных сетей
+        буквально в 2 клика.
+    </p>
+</div>
+<div class="b-social">
+    {% for provider in get_social_providers() %}
+        <a href="{{ url('mindy_social_auth', ['provider' => provider]) }}"
+           class="b-social__link b-social__link_{{ provider }}"
+           target="_blank" title="{{ provider }}"></a>
+    {% endfor %}
+</div>

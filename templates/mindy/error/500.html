@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Ошибка']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Упс! На сайте произошла ошибка.</h1>
+                <div class="b-typeset">
+                    <p>Администраторы сайта уже уведомлены о проблеме и в ближайшее время ее устранят.</p>
+                    <p>Попробуйте обновить страницу. Если ошибка не пропала, повторите запрос через несколько минут.</p>
+                    <p>Спасибо за понимание.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

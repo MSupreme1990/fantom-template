@@ -1,0 +1,15 @@
+.b-logo {
+
+  &__img {
+  }
+
+  &__block {
+    display: flex;
+    justify-content: center;
+
+    @include flexy-breakpoint(large) {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}
